@@ -15,13 +15,13 @@ import java.time.Instant;
 )
 public class Payment {
     @Id
-    private String id; // pay_xxx
+    private String id;
 
     @Column(nullable = false)
     private Long merchantId;
 
     @Column(nullable = false, length = 20)
-    private String method; // CARD|PIX|DEBIT|BOLETO
+    private String method;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
@@ -30,17 +30,16 @@ public class Payment {
     private String currency;
 
     @Column(nullable = false)
-    private Integer installments; // 1..12
+    private Integer installments;
 
-    // Mantido como Double por simplicidade no simulador
-    private Double monthlyInterest; // 1.0 (=1%/mês)
+    private Double monthlyInterest;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal totalWithInterest;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private Status status; // PENDING|APPROVED|DECLINED|EXPIRED|REFUNDED
+    private Status status;
 
     @Column(nullable = false)
     private Instant createdAt;
